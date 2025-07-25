@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navbar & Blog Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-around;
+            background-color: #333;
+            padding: 15px 0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            font-weight: bold;
+        }
+
+        .navbar a:hover {
+            background-color: #575757;
+        }
+
+        .navbar a.active {
+            background-color: #007bff; /* Warna biru untuk tab aktif */
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .tab-content {
+            display: none; /* Sembunyikan semua konten tab secara default */
+            padding: 20px 0;
+        }
+
+        .tab-content.active {
+            display: block; /* Tampilkan konten tab yang aktif */
+        }
+
+        /* Styling untuk Blog Post */
+        .blog-section h2 {
+            color: #007bff;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        .blog-list ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .blog-list li {
+            background-color: #f9f9f9;
+            margin-bottom: 10px;
+            padding: 15px;
+            border-radius: 5px;
+            border: 1px solid #eee;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+
+        .blog-list li:hover {
+            background-color: #e9e9e9;
+        }
+
+        .blog-story {
+            border: 1px solid #ddd;
+            padding: 20px;
+            border-radius: 8px;
+            background-color: #fff;
+        }
+
+        .blog-story h3 {
+            color: #333;
+            margin-top: 0;
+        }
+
+        .blog-story p {
+            line-height: 1.6;
+            color: #555;
+        }
+
+        .blog-story .meta {
+            font-size: 0.9em;
+            color: #888;
+            margin-bottom: 15px;
+        }
+
+        .comment-section {
+            margin-top: 25px;
+            border-top: 1px solid #eee;
+            padding-top: 20px;
+        }
+
+        .comment-section h4 {
+            margin-bottom: 15px;
+            color: #007bff;
+        }
+
+        .comment {
+            background-color: #f0f0f0;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        .comment strong {
+            color: #333;
+        }
+
+        .like-button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            margin-top: 15px;
+            transition: background-color 0.2s ease;
+        }
+
+        .like-button:hover {
+            background-color: #218838;
+        }
+
+        .like-button.liked {
+            background-color: #dc3545; /* Warna merah jika sudah disukai */
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <a href="#" data-tab="explore">Explore</a>
+        <a href="#" data-tab="shop">Shop</a>
+        <a href="#" data-tab="home" class="active">Home</a>
+        <a href="#" data-tab="wallet">Wallet</a>
+        <a href="#" data-tab="profile">Profile</a>
+    </nav>
+
+    <div class="container">
+        <div id="explore" class="tab-content">
+            <h2>Halaman Jelajahi</h2>
+            <p>Konten menarik untuk dijelajahi akan muncul di sini.</p>
+        </div>
+
+        <div id="shop" class="tab-content">
+            <h2>Halaman Belanja</h2>
+            <p>Temukan produk-produk terbaru di sini!</p>
+        </div>
+
+        <div id="home" class="tab-content active">
+            <div class="blog-section">
+                <h2>Berita Terbaru</h2>
+
+                <div class="blog-list">
+                    <h3>Daftar Blog</h3>
+                    <ul>
+                        <li data-blog-id="1">Pengantar HTML dan CSS</li>
+                        <li data-blog-id="2">Memahami JavaScript Dasar</li>
+                        <li data-blog-id="3">Tips untuk Coding yang Bersih</li>
+                    </ul>
+                </div>
+
+                <div class="blog-story" id="blogStoryContainer">
+                    <h3>Pengantar HTML dan CSS</h3>
+                    <div class="meta">Diposting oleh Admin pada 24 Juli 2025</div>
+                    <p>HTML (HyperText Markup Language) adalah bahasa standar untuk membuat halaman web dan aplikasi web. Dengan HTML, kita bisa menyusun struktur konten web.</p>
+                    <p>CSS (Cascading Style Sheets) adalah bahasa style sheet yang digunakan untuk menjelaskan presentasi dokumen yang ditulis dalam bahasa markup seperti HTML. CSS mendeskripsikan bagaimana elemen-elemen harus ditampilkan di layar, di atas kertas, atau di media lain.</p>
+                    <p>Dengan menggabungkan keduanya, kita dapat menciptakan halaman web yang terstruktur dengan baik dan terlihat menarik. HTML menyediakan kerangka, sementara CSS memberikan 'gaya' pada kerangka tersebut.</p>
+
+                    <div class="comment-section">
+                        <h4>Komentar</h4>
+                        <div class="comment">
+                            <strong>Ahmad:</strong> Artikel yang sangat membantu, terima kasih!
+                        </div>
+                        <div class="comment">
+                            <strong>Budi:</strong> Penjelasan yang mudah dimengerti.
+                        </div>
+                    </div>
+                    <button class="like-button" data-likes="0">Suka (0)</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="wallet" class="tab-content">
+            <h2>Halaman Dompet</h2>
+            <p>Kelola saldo dan transaksi Anda di sini.</p>
+        </div>
+
+        <div id="profile" class="tab-content">
+            <h2>Halaman Profil</h2>
+            <p>Lihat dan edit informasi profil Anda.</p>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const navbarLinks = document.querySelectorAll('.navbar a');
+            const tabContents = document.querySelectorAll('.tab-content');
+            const likeButton = document.querySelector('.like-button');
+            const blogListItems = document.querySelectorAll('.blog-list li');
+            const blogStoryContainer = document.getElementById('blogStoryContainer');
+
+            // Data contoh untuk blog post
+            const blogPosts = {
+                '1': {
+                    title: 'Pengantar HTML dan CSS',
+                    author: 'Admin',
+                    date: '24 Juli 2025',
+                    content: `
+                        <p>HTML (HyperText Markup Language) adalah bahasa standar untuk membuat halaman web dan aplikasi web. Dengan HTML, kita bisa menyusun struktur konten web.</p>
+                        <p>CSS (Cascading Style Sheets) adalah bahasa style sheet yang digunakan untuk menjelaskan presentasi dokumen yang ditulis dalam bahasa markup seperti HTML. CSS mendeskripsikan bagaimana elemen-elemen harus ditampilkan di layar, di atas kertas, atau di media lain.</p>
+                        <p>Dengan menggabungkan keduanya, kita dapat menciptakan halaman web yang terstruktur dengan baik dan terlihat menarik. HTML menyediakan kerangka, sementara CSS memberikan 'gaya' pada kerangka tersebut.</p>
+                    `,
+                    comments: [
+                        { author: 'Ahmad', text: 'Artikel yang sangat membantu, terima kasih!' },
+                        { author: 'Budi', text: 'Penjelasan yang mudah dimengerti.' }
+                    ]
+                },
+                '2': {
+                    title: 'Memahami JavaScript Dasar',
+                    author: 'Developer Enthusiast',
+                    date: '20 Juli 2025',
+                    content: `
+                        <p>JavaScript adalah bahasa pemrograman yang memungkinkan Anda mengimplementasikan hal-hal kompleks pada halaman web. Setiap kali sebuah halaman web melakukan lebih dari sekadar menampilkan informasi statis — menampilkan pembaruan konten yang tepat waktu, peta interaktif, animasi grafis 2D/3D, kontrol pemutaran video, dll. — Anda dapat bertaruh bahwa JavaScript terlibat.</p>
+                        <p>Ini adalah teknologi dasar ketiga dari World Wide Web, bersama dengan HTML dan CSS. HTML untuk struktur, CSS untuk tampilan, dan JavaScript untuk interaktivitas.</p>
+                    `,
+                    comments: [
+                        { author: 'Citra', text: 'JavaScript memang sangat powerful!' },
+                        { author: 'Doni', text: 'Penjelasan yang bagus tentang konsep dasar.' }
+                    ]
+                },
+                '3': {
+                    title: 'Tips untuk Coding yang Bersih',
+                    author: 'Code Master',
+                    date: '15 Juli 2025',
+                    content: `
+                        <p>Menulis kode yang bersih sangat penting untuk pemeliharaan dan kolaborasi. Beberapa tips termasuk: gunakan nama variabel yang deskriptif, pecah fungsi menjadi bagian-bagian kecil, dan tambahkan komentar jika diperlukan.</p>
+                        <p>Kode yang bersih lebih mudah dibaca, dipahami, dan dimodifikasi di masa mendatang, baik oleh Anda sendiri maupun oleh orang lain.</p>
+                    `,
+                    comments: [
+                        { author: 'Eka', text: 'Setuju sekali! Clean code itu investasi.' },
+                        { author: 'Fahmi', text: 'Terima kasih tipsnya!' }
+                    ]
+                }
+            };
+
+            // Fungsi untuk menampilkan tab yang aktif
+            function showTab(tabId) {
+                tabContents.forEach(content => {
+                    content.classList.remove('active');
+                });
+                document.getElementById(tabId).classList.add('active');
+
+                navbarLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.dataset.tab === tabId) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+
+            // Event listener untuk navbar
+            navbarLinks.forEach(link => {
+                link.addEventListener('click', function(event) {
+                    event.preventDefault(); // Mencegah default link behavior
+                    const tabId = this.dataset.tab;
+                    showTab(tabId);
+                });
+            });
+
+            // Event listener untuk tombol suka
+            if (likeButton) {
+                likeButton.addEventListener('click', function() {
+                    let likes = parseInt(this.dataset.likes);
+                    if (this.classList.contains('liked')) {
+                        likes--;
+                        this.classList.remove('liked');
+                    } else {
+                        likes++;
+                        this.classList.add('liked');
+                    }
+                    this.dataset.likes = likes;
+                    this.textContent = `Suka (${likes})`;
+                });
+            }
+
+            // Fungsi untuk memuat cerita blog
+            function loadBlogPost(blogId) {
+                const post = blogPosts[blogId];
+                if (post) {
+                    let commentsHtml = '';
+                    post.comments.forEach(comment => {
+                        commentsHtml += `<div class="comment"><strong>${comment.author}:</strong> ${comment.text}</div>`;
+                    });
+
+                    blogStoryContainer.innerHTML = `
+                        <h3>${post.title}</h3>
+                        <div class="meta">Diposting oleh ${post.author} pada ${post.date}</div>
+                        ${post.content}
+                        <div class="comment-section">
+                            <h4>Komentar</h4>
+                            ${commentsHtml}
+                        </div>
+                        <button class="like-button" data-likes="0">Suka (0)</button>
+                    `;
+                    // Setelah memuat konten baru, inisialisasi ulang tombol suka
+                    const newLikeButton = blogStoryContainer.querySelector('.like-button');
+                    if (newLikeButton) {
+                        newLikeButton.addEventListener('click', function() {
+                            let likes = parseInt(this.dataset.likes);
+                            if (this.classList.contains('liked')) {
+                                likes--;
+                                this.classList.remove('liked');
+                            } else {
+                                likes++;
+                                this.classList.add('liked');
+                            }
+                            this.dataset.likes = likes;
+                            this.textContent = `Suka (${likes})`;
+                        });
+                    }
+                }
+            }
+
+            // Event listener untuk daftar blog
+            blogListItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    const blogId = this.dataset.blogId;
+                    loadBlogPost(blogId);
+                });
+            });
+
+            // Setel tab 'Home' sebagai aktif saat halaman pertama kali dimuat
+            showTab('home');
+        });
+    </script>
+</body>
+</html>
